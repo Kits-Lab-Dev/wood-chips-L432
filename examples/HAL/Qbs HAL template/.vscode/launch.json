@@ -1,0 +1,26 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+	{
+		"name":"stlink",
+		"cwd": "${workspaceRoot}",
+		"executable": "${command:qbs.getProductExecutablePath}",
+		"request": "launch",
+		"type": "cortex-debug",
+		"servertype": "stlink",
+		"stm32cubeprogrammer": "C:/ST/STM32CubeCLT/STM32CubeProgrammer/bin",
+		"showDevDebugOutput": "none",
+		"preLaunchTask": "Qbs: build",
+        "svdFile": "C:/ST/STM32CubeCLT/STMicroelectronics_CMSIS_SVD/STM32L4x3.svd"
+	},
+    {
+        "name":"DFU",
+        "preLaunchTask": "Qbs: build",
+        "request": "launch",
+        "type": "cppdbg",
+        "program": "C:/ST/STM32CubeCLT/STM32CubeProgrammer/bin/STM32_Programmer_CLI.exe",
+        "args": ["-c port=usb1 -w ${command:qbs.getProductExecutablePath} -s"],
+        "cwd":"."
+    }
+	]
+}
